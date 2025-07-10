@@ -37,6 +37,27 @@
     <div class="container">
         <h1>Website Blocked</h1>
         <p>This website is currently blocked by your focus settings.</p>
+        <div id="app-link" style="display: none; margin-top: 20px;">
+            <a id="open-app" href="#" style="display: inline-block; padding: 12px 24px; background-color: #007AFF; color: white; text-decoration: none; border-radius: 8px; font-weight: 500;">Open Application</a>
+        </div>
     </div>
+
+    <script>
+        // Check for app parameter in URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const appId = urlParams.get('app');
+        
+        if (appId) {
+            // Show the app link container
+            const appLinkContainer = document.getElementById('app-link');
+            const appLink = document.getElementById('open-app');
+            
+            // Set the custom URL scheme
+            appLink.href = appId + '://';
+            
+            // Show the link
+            appLinkContainer.style.display = 'block';
+        }
+    </script>
 </body>
 </html>
